@@ -1,9 +1,5 @@
-dist: trusty
-sudo: required
-language: java
-addons:
-  #firefox: 58.0.1
-  chrome: stable
+image: maven:latest
+
 before_install:
     - mkdir webdrivers
     - # wget https://github.com/mozilla/geckodriver/releases/download/v0.19.1/geckodriver-v0.19.1-linux64.tar.gz
@@ -16,5 +12,7 @@ before_install:
     - #geckodriver --version
     - chromedriver -version
     - #export MOZ_HEADLESS=1
-script:
-  - mvn verify
+test:
+  stage: test
+  script:
+    - mvn verify
